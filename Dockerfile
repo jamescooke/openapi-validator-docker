@@ -1,7 +1,7 @@
 FROM node:13.7.0-alpine
 
 # ARG is used here to make auto-update easy
-ARG version=0.15.1
+ARG version=0.17.1
 
 RUN npm install -g ibm-openapi-validator@${version}
 
