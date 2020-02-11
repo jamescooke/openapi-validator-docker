@@ -34,3 +34,11 @@ jobs:
     - name: Check for existing tag, update Dockerfile
       run: |
         ./update.sh ${{ steps.latest_tag.outputs.latest_tag }}
+
+    - name: Create PR for new release
+      uses: peter-evans/create-pull-request@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: "Bump to ${{ steps.latest_tag.outputs.latest_tag }}"
+        title: "Bump to ${{ steps.latest_tag.outputs.latest_tag }}"
+        branch: "${{ steps.latest_tag.outputs.latest_tag }}"
