@@ -15,10 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Checkout with all tags and branches
-      uses: actions/checkout@v2
-      run: |
-        git fetch --depth=1 origin +refs/tags/*:refs/tags/*:refs/heads/*:refs/remotes/origin/*
+    - uses: actions/checkout@v2
 
     - name: Get Latest Release
       id: latest_tag
