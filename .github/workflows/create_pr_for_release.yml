@@ -7,7 +7,7 @@ name: Create PR for release
 
 on:
   schedule:
-    - cron: "41 * * * *"
+    - cron: "0 * * * *"
 
 jobs:
   latest-version:
@@ -16,6 +16,9 @@ jobs:
     steps:
 
     - uses: actions/checkout@v2
+
+    - name: Fetch existing tags and branches
+      run: git fetch --prune
 
     - name: Get latest openapi-validator tag
       id: latest_tag
