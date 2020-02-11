@@ -7,17 +7,17 @@ name: Create PR for release
 
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "41 * * * *"
 
 jobs:
   latest-version:
-    name: Get Latest Release
+    name: Do work
     runs-on: ubuntu-latest
     steps:
 
     - uses: actions/checkout@v2
 
-    - name: Get Latest Release
+    - name: Get latest openapi-validator tag
       id: latest_tag
       uses: abatilo/release-info-action@v1.1.0
       with:
@@ -26,8 +26,8 @@ jobs:
 
     - name: Debug, show latest version
       run: |
-        echo "LATEST_TAG='${{ steps.latest_version.outputs.latest_tag }}'"
+        echo "LATEST_TAG='${{ steps.latest_tag.outputs.latest_tag }}'"
 
     - name: Check for existing tag, update Dockerfile
       run: |
-        ./update.sh ${{ steps.latest_version.outputs.latest_tag }}
+        ./update.sh ${{ steps.latest_tag.outputs.latest_tag }}
