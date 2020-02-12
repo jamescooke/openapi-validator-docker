@@ -7,7 +7,7 @@ name: Create PR for release
 
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 12 * * *"
 
 jobs:
   latest-version:
@@ -17,8 +17,8 @@ jobs:
 
     - uses: actions/checkout@v2
 
-    - name: Fetch existing tags and branches
-      run: git fetch --prune
+    - name: Fetch all git history
+      run: git fetch --prune --unshallow
 
     - name: Get latest openapi-validator tag
       id: latest_tag
@@ -32,10 +32,12 @@ jobs:
         echo "LATEST_TAG='${{ steps.latest_tag.outputs.latest_tag }}'"
 
     - name: Check for existing tag, update Dockerfile
+      continue-on-error: true
       run: |
         ./update.sh ${{ steps.latest_tag.outputs.latest_tag }}
 
     - name: Create PR for new release
+      if: success()
       uses: peter-evans/create-pull-request@v2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}

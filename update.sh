@@ -21,7 +21,7 @@ set -e
 echo "* Existing tag = '$existing_tag'"
 if [ "$existing_tag" ]; then
     echo "Exiting"
-    exit 0
+    exit 1
 fi
 
 echo ""
@@ -33,7 +33,7 @@ set -e
 echo "* Existing branch = '$existing_branch'"
 if [ "$existing_branch" ]; then
     echo "Exiting"
-    exit 0
+    exit 1
 fi
 
 version_without_prefix=${1//v/}
