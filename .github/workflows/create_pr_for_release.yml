@@ -5,9 +5,7 @@ name: Create PR for release
 # if no branch or tag exists locally for that release (e.g. "v0.19.0"), then a
 # new branch is created and PR opened to bump the version.
 
-on:
-  schedule:
-    - cron: "0 12 * * *"
+on: repository_dispatch
 
 jobs:
   latest-version:
