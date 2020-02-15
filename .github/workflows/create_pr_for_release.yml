@@ -9,7 +9,7 @@ on: push
 
 jobs:
   latest-version:
-    name: Do work
+    name: Check release, make PR
     runs-on: ubuntu-latest
     steps:
 
