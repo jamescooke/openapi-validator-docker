@@ -33,7 +33,7 @@ jobs:
       id: update_sh
       continue-on-error: true
       run: |
-        ./update.sh ${{ steps.latest_tag.outputs.latest_tag }}
+        ./update.sh "v0.19.2"
 
     - name: Debug, show update results
       run: |
