@@ -1,8 +1,7 @@
 name: Create tag version
 
-# Extracts current version from Dockerfile "ARG version=" line and uses it to create a tag.
-
-# TODO: might need some fix for case when PR does not bump version and tag already exists.
+# Extracts current version from Dockerfile "ARG version=" line and uses it to
+# create a tag.
 
 on:
   push:
