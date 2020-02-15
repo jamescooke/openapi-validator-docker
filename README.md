@@ -1,7 +1,43 @@
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/jamescooke/openapi-validator)
+![Docker Pulls](https://img.shields.io/docker/pulls/jamescooke/openapi-validator)
+
+
 # Docker container for IBM OpenAPI Validator
 
 This is a small community Docker container wrapper around [IBM's
 OpenAPI Validator](https://github.com/IBM/openapi-validator/).
+
+## Run
+
+* To validate a specification file `openapi.yaml` in the current directory,
+  mount the current directory at `/data` in the container (this is the image's
+  default working directory):
+
+  ```sh
+  $ docker run \
+  >    --volume "$PWD":/data \
+  >    jamescooke/openapi-validator openapi.yaml
+  ```
+
+* The `init` command can be used to generate the initial `.validaterc` file,
+  which will be created in the mounted directory.
+
+  ```sh
+  $ docker run \
+  >    --volume "$PWD":/data \
+  >    jamescooke/openapi-validator init
+  ```
+
+  You may need to adjust the permissions of the generated file.
+
+* If you prefer to rename your config file, for example to `config.json`, then
+  this can be passed with the `--config` flag:
+
+  ```sh
+  $ docker run \
+  >    --volume "$PWD":/data \
+  >    jamescooke/openapi-validator openapi.yaml --config config.json
+  ```
 
 ## Links
 
