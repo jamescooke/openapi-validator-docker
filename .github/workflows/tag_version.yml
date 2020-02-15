@@ -18,5 +18,5 @@ jobs:
       with:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         source_file: "Dockerfile"
-        extraction_regex: "^ARG version=(\\d+\\.\\d+\\.\\d+)"
+        extraction_regex: "ARG version=(\\d+\\.\\d+\\.\\d+)"
         tag_format: "v{version}"
