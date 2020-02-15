@@ -1,11 +1,13 @@
 name: Create PR for release
 
-# On an hourly basis, this workflow is triggered. It checks the latest release
-# on https://github.com/IBM/openapi-validator/releases. For the latest release,
-# if no branch or tag exists locally for that release (e.g. "v0.19.0"), then a
-# new branch is created and PR opened to bump the version.
+# checks the latest release on
+# https://github.com/IBM/openapi-validator/releases. For the latest release, if
+# no branch or tag exists locally for that release (e.g. "v0.19.0"), then a new
+# branch is created and PR opened to bump the version.
 
-on: push
+on:
+  schedule:
+    - cron:  '*/15 * * * *'
 
 jobs:
   latest-version:
@@ -27,7 +29,7 @@ jobs:
 
     - name: Debug, show latest version
       run: |
-        echo "LATEST_TAG='${{ steps.latest_tag.outputs.latest_tag }}'"
+        echo "latest_tag='${{ steps.latest_tag.outputs.latest_tag }}'"
 
     - name: Check for existing tag, update Dockerfile
       id: update_sh
