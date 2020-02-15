@@ -42,7 +42,7 @@ jobs:
           echo "make_pr='${{ steps.update_sh.outputs.make_pr }}'"
 
     - name: Create PR for new release
-      if: steps.update_sh.outputs.make_pr == "yes"
+      if: steps.update_sh.outputs.make_pr == 'yes'
       uses: peter-evans/create-pull-request@v2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
