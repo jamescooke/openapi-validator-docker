@@ -5,7 +5,7 @@ name: Create PR for release
 # if no branch or tag exists locally for that release (e.g. "v0.19.0"), then a
 # new branch is created and PR opened to bump the version.
 
-on: repository_dispatch
+on: push
 
 jobs:
   latest-version:
@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Fetch all git history
-      run: git fetch --prune --unshallow
+      run: git fetch --prune --unshallow --tags
 
     - name: Get latest openapi-validator tag
       id: latest_tag
@@ -30,12 +30,19 @@ jobs:
         echo "LATEST_TAG='${{ steps.latest_tag.outputs.latest_tag }}'"
 
     - name: Check for existing tag, update Dockerfile
+      id: update_sh
       continue-on-error: true
       run: |
         ./update.sh ${{ steps.latest_tag.outputs.latest_tag }}
 
+    - name: Debug, show update results
+      run: |
+          echo "$found='${{ steps.update_sh.outputs.found }}'"
+          echo "$name='${{ steps.update_sh.outputs.name }}'"
+          echo "$make_pr='${{ steps.update_sh.outputs.make_pr }}'"
+
     - name: Create PR for new release
-      if: success()
+      if: false
       uses: peter-evans/create-pull-request@v2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
