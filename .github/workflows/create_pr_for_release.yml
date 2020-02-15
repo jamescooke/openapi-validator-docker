@@ -33,16 +33,16 @@ jobs:
       id: update_sh
       continue-on-error: true
       run: |
-        ./update.sh "v0.19.2"
+        ./update.sh ${{ steps.latest_tag.outputs.latest_tag }}
 
     - name: Debug, show update results
       run: |
-          echo "$found='${{ steps.update_sh.outputs.found }}'"
-          echo "$name='${{ steps.update_sh.outputs.name }}'"
-          echo "$make_pr='${{ steps.update_sh.outputs.make_pr }}'"
+          echo "found='${{ steps.update_sh.outputs.found }}'"
+          echo "name='${{ steps.update_sh.outputs.name }}'"
+          echo "make_pr='${{ steps.update_sh.outputs.make_pr }}'"
 
     - name: Create PR for new release
-      if: false
+      if: steps.update_sh.outputs.make_pr == "yes"
       uses: peter-evans/create-pull-request@v2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
