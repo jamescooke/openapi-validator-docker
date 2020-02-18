@@ -1,0 +1,48 @@
+name: Build, test, tag
+
+on: push
+
+jobs:
+  build_test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build image
+      run: docker build . --file Dockerfile --tag image
+    - name: Run image
+      run: docker run image
+
+  tag:
+    needs: build_test
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Fetch all git history
+      run: git fetch --prune --unshallow --tags
+
+    - name: Extract tag
+      id: extract_tag
+      run: ./extract_tag.sh
+    - name: Debug found tag
+      run: echo "version='${{ steps.extract_tag.outputs.version }}'"
+
+    - name: Check tag
+      id: check_tag
+      run: ./check_tag.sh ${{ steps.extract_tag.outputs.version }}
+    - name: Debug check tag
+      run: echo "existing_tag='${{ steps.check_tag.outputs.existing_tag }}'"
+
+    - name: Create tag
+      if: steps.check_tag.outputs.existing_tag == ''
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git tag -a "${{ steps.extract_tag.outputs.version }}" -m ""
+
+    - name: Push tag
+      if: steps.check_tag.outputs.existing_tag == ''
+      env:
+        REMOTE_REPO: "https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}.git"
+      run: git push "$REMOTE_REPO" --tags

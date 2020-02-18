@@ -15,8 +15,8 @@ OpenAPI Validator](https://github.com/IBM/openapi-validator/).
 
   ```sh
   $ docker run \
-  >    --volume "$PWD":/data \
-  >    jamescooke/openapi-validator openapi.yaml
+       --volume "$PWD":/data \
+       jamescooke/openapi-validator openapi.yaml
   ```
 
 * The `init` command can be used to generate the initial `.validaterc` file,
@@ -24,8 +24,8 @@ OpenAPI Validator](https://github.com/IBM/openapi-validator/).
 
   ```sh
   $ docker run \
-  >    --volume "$PWD":/data \
-  >    jamescooke/openapi-validator init
+       --volume "$PWD":/data \
+       jamescooke/openapi-validator init
   ```
 
   You may need to adjust the permissions of the generated file.
@@ -35,8 +35,8 @@ OpenAPI Validator](https://github.com/IBM/openapi-validator/).
 
   ```sh
   $ docker run \
-  >    --volume "$PWD":/data \
-  >    jamescooke/openapi-validator openapi.yaml --config config.json
+       --volume "$PWD":/data \
+       jamescooke/openapi-validator openapi.yaml --config config.json
   ```
 
 ## Links
