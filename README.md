@@ -1,5 +1,5 @@
-![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/jamescooke/openapi-validator)
-![Docker Pulls](https://img.shields.io/docker/pulls/jamescooke/openapi-validator)
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/jamescooke/openapi-validator)](https://hub.docker.com/r/jamescooke/openapi-validator)
+[![Docker Pulls](https://img.shields.io/docker/pulls/jamescooke/openapi-validator)](https://hub.docker.com/r/jamescooke/openapi-validator)
 
 
 # Docker container for IBM OpenAPI Validator
@@ -41,7 +41,7 @@ OpenAPI Validator](https://github.com/IBM/openapi-validator/).
 
 ## Container
 
-* This is a "small-ish" container built on [Node 13
+* This is a "small-ish" container built on the official [Node 13
   Alpine](https://hub.docker.com/_/node/) base image.
 
 * OpenAPI validator is installed in the container using `npm`.
