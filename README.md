@@ -1,5 +1,5 @@
-![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/jamescooke/openapi-validator)
-![Docker Pulls](https://img.shields.io/docker/pulls/jamescooke/openapi-validator)
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/jamescooke/openapi-validator)](https://hub.docker.com/r/jamescooke/openapi-validator)
+[![Docker Pulls](https://img.shields.io/docker/pulls/jamescooke/openapi-validator)](https://hub.docker.com/r/jamescooke/openapi-validator)
 
 
 # Docker container for IBM OpenAPI Validator
@@ -37,6 +37,22 @@ OpenAPI Validator](https://github.com/IBM/openapi-validator/).
   $ docker run \
        --volume "$PWD":/data \
        jamescooke/openapi-validator openapi.yaml --config config.json
+  ```
+
+## Container
+
+* This is a "small-ish" container built on the official [Node 13
+  Alpine](https://hub.docker.com/_/node/) base image.
+
+* OpenAPI validator is installed in the container using `npm`.
+
+* Image tags are kept synchronised with the version of OpenAPI validator. For
+  example, image `0.21.0` contains [OpenAPI validator version
+  `0.21.0`](https://github.com/IBM/openapi-validator/releases/tag/v0.21.0):
+
+  ```sh
+  $ docker run jamescooke/openapi-validator:0.21.0 --version
+  0.21.0
   ```
 
 ## Links
