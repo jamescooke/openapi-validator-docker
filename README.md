@@ -2,9 +2,9 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/jamescooke/openapi-validator)](https://hub.docker.com/r/jamescooke/openapi-validator)
 
 
-# Docker container for IBM OpenAPI Validator
+# Docker image for IBM OpenAPI Validator
 
-This is a small community Docker container wrapper around [IBM's
+This is a small community Docker image providing [IBM's
 OpenAPI Validator](https://github.com/IBM/openapi-validator/).
 
 ## Run
