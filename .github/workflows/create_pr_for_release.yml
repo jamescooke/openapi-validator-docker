@@ -22,7 +22,7 @@ jobs:
 
     - name: Get latest openapi-validator tag
       id: latest_tag
-      uses: abatilo/release-info-action@0b80b86
+      uses: abatilo/release-info-action@0b80b860c5c5aa1072ab6b28fa7d1c80b4ba3c78
       with:
         owner: IBM
         repo: openapi-validator
@@ -45,7 +45,7 @@ jobs:
 
     - name: Create PR for new release
       if: steps.update_sh.outputs.make_pr == 'yes'
-      uses: peter-evans/create-pull-request@v2
+      uses: peter-evans/create-pull-request@v3.8.2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: "Bump to ${{ steps.latest_tag.outputs.latest_tag }}"
