@@ -11,6 +11,14 @@ jobs:
       run: docker build . --file Dockerfile --tag image
     - name: Run image
       run: docker run image
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: 'image'
+        format: 'table'
+        exit-code: '1'
+        ignore-unfixed: true
+        vuln-type: 'os,library'
 
   tag:
     needs: build_test
