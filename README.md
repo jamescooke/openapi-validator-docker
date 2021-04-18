@@ -41,7 +41,7 @@ OpenAPI Validator](https://github.com/IBM/openapi-validator/).
 
 ## Container
 
-* This is a "small-ish" container built on the official [Node 13
+* This is a "small-ish" container built on the official [Node
   Alpine](https://hub.docker.com/_/node/) base image.
 
 * OpenAPI validator is installed in the container using `npm`.
