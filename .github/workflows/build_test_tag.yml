@@ -4,6 +4,7 @@ on: push
 
 jobs:
   build_test:
+    # Build image and test with trivy
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -12,14 +13,17 @@ jobs:
     - name: Run image
       run: docker run image
     - name: Run Trivy vulnerability scanner
-      uses: aquasecurity/trivy-action@0.0.14
+      uses: aquasecurity/trivy-action@0.0.20
       with:
         image-ref: 'image'
         format: 'table'
         exit-code: '1'
         ignore-unfixed: true
 
-  tag:
+  tag_push:
+    # When a new version is found:
+    #  * push a new latest and tagged image to docker hub
+    #  * push a new tag to GitHub
     needs: build_test
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
