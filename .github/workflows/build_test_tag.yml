@@ -4,6 +4,7 @@ on: push
 
 jobs:
   build_test:
+    # Build image and test with trivy
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -12,17 +13,19 @@ jobs:
     - name: Run image
       run: docker run image
     - name: Run Trivy vulnerability scanner
-      uses: aquasecurity/trivy-action@0.0.14
+      uses: aquasecurity/trivy-action@0.0.20
       with:
         image-ref: 'image'
         format: 'table'
         exit-code: '1'
         ignore-unfixed: true
 
-  tag:
+  check_new_version:
     needs: build_test
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
+    outputs:
+      existing_version: ${{ steps.check_tag.outputs.existing_tag }}
     steps:
     - uses: actions/checkout@v2
 
@@ -41,15 +44,29 @@ jobs:
     - name: Debug check tag
       run: echo "existing_tag='${{ steps.check_tag.outputs.existing_tag }}'"
 
+  push_image:
+    # When a new version is found push a new latest and tagged image to docker
+    # hub
+    needs: check_new_version
+    # if: needs.check_new_version.outputs.existing_version == ''
+    runs-on: ubuntu-latest
+    steps:
+    - name: Debug check tag
+      run: echo "existing_version='${{ needs.check_new_version.outputs.existing_version }}'"
+
+  push_tag:
+    # When a new version is found push a new tag to GitHub
+    needs: check_new_version
+    if: needs.check_new_version.outputs.existing_version == ''
+    runs-on: ubuntu-latest
+    steps:
     - name: Create tag
-      if: steps.check_tag.outputs.existing_tag == ''
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git tag -a "${{ steps.extract_tag.outputs.version }}" -m ""
 
     - name: Push tag
-      if: steps.check_tag.outputs.existing_tag == ''
       env:
         REMOTE_REPO: "https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}.git"
       run: git push "$REMOTE_REPO" --tags
