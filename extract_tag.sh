@@ -13,4 +13,4 @@ function output {
 
 # === Check Dockerfile ===
 
-output version "v$(grep -Eo '^ARG version=.*$' Dockerfile | grep -Eo '[0-9]+.[0-9]+.[0-9]+')"
+output version "$(grep -Eo '^ARG version=.*$' Dockerfile | grep -Eo '[0-9]+.[0-9]+.[0-9]+')"
