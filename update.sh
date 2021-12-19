@@ -3,7 +3,8 @@
 # $ ./update.sh [NEW VERSION]
 # Update existing version in Dockerfile
 # Where:
-#   [NEW VERSION] is version string in "vn.n.n" format, *with* leading "v".
+#   [NEW VERSION] is version string in "ibm-openapi-validator@n.n.n" format,
+#   *with* leading "ibm-openapi-validator@".
 
 set -eo pipefail
 
@@ -55,7 +56,9 @@ fi
 
 # === Update Dockerfile ===
 
-version_without_prefix=${1//v/}
+# Tags used to be "vX.Y.Z" format, e.g: https://github.com/IBM/openapi-validator/releases/tag/v0.51.3
+# New format is "ibm-openapi-validator@X.Y.Z", e.g: https://github.com/IBM/openapi-validator/releases/tag/ibm-openapi-validator%400.51.3
+version_without_prefix=${1//ibm-openapi-validator@/}
 echo ""
 echo "=== Updating Dockerfile with '$version_without_prefix' ==="
 
