@@ -2,7 +2,8 @@
 
 # $ ./check_tag.sh [VERSION]
 # Where:
-#   [VERSION] current version string in "vn.n.n" format, *with* leading "v".
+#   [VERSION] current version string in "n.n.n" format. Version passed in is
+#   the output of extract_tag.sh
 
 set -eo pipefail
 
