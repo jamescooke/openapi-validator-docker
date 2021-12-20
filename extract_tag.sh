@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Inspect Dockerfile to extract tag.
+# Inspect Dockerfile to extract tag. Extracted current tag is passed to
+# check_tag.sh to see if the tag already exists.
 
 set -eo pipefail
 
