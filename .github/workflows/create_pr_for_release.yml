@@ -22,7 +22,7 @@ jobs:
 
     - name: Get latest openapi-validator tag
       id: latest_tag
-      uses: abatilo/release-info-action@0b80b860c5c5aa1072ab6b28fa7d1c80b4ba3c78
+      uses: jamescooke/release-info-action@1e086647a869e733d22a2ccffe0377d6267038bc
       with:
         owner: IBM
         repo: openapi-validator
