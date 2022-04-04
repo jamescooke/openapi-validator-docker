@@ -13,12 +13,13 @@ jobs:
     - name: Run image
       run: docker run image
     - name: Run Trivy vulnerability scanner
-      uses: aquasecurity/trivy-action@0.0.20
+      uses: aquasecurity/trivy-action@0.2.2
       with:
         image-ref: 'image'
         format: 'table'
         exit-code: '1'
         ignore-unfixed: true
+        severity: 'LOW,MEDIUM,HIGH,CRITICAL'
 
   check_new_version:
     needs: build_test
