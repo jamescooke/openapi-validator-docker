@@ -1,6 +1,8 @@
 name: Build, test, tag
 
-on: push
+on:
+  pull_request:
+  push:
 
 jobs:
   build_test:
@@ -13,7 +15,7 @@ jobs:
     - name: Run image
       run: docker run image
     - name: Run Trivy vulnerability scanner
-      uses: aquasecurity/trivy-action@0.3.0
+      uses: aquasecurity/trivy-action@0.5.1
       with:
         image-ref: 'image'
         format: 'table'
