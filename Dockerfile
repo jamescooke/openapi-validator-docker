@@ -5,6 +5,8 @@ ARG version=0.81.1
 
 RUN npm install -g ibm-openapi-validator@${version}
 
+RUN npm cache clean --force
+
 WORKDIR /data
 
 ENTRYPOINT ["lint-openapi"]
