@@ -1,4 +1,4 @@
-FROM node:18.3-alpine3.15
+FROM node:current
 
 # ARG is used here to make auto-update easy
 ARG version=0.81.1
