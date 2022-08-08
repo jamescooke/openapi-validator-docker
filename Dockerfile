@@ -1,4 +1,4 @@
-FROM node:current
+FROM node:current-buster
 
 # ARG is used here to make auto-update easy
 ARG version=0.84.0
