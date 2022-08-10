@@ -1,7 +1,7 @@
 FROM node:current-buster
 
 # ARG is used here to make auto-update easy
-ARG version=0.84.1
+ARG version=0.84.2
 
 RUN npm install -g ibm-openapi-validator@${version}
 
