@@ -1,4 +1,4 @@
-FROM node:current-buster
+FROM node:current-alpine3.16
 
 # ARG is used here to make auto-update easy
 ARG version=0.86.0
