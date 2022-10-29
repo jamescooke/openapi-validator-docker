@@ -1,0 +1,17 @@
+openapi: 3.0.3
+info:
+  title: Minimal test schema
+  description: Contains a single error - the get request does not contain a response body.
+  version: "1.0"
+servers:
+  - url: https://example.com/api/v3
+paths:
+  /test:
+    get:
+      operationId: get_test
+      tags:
+        - test
+      description: Get information about a test.
+      summary: That test you wrote, get it
+tags:
+  - name: test

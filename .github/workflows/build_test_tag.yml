@@ -10,10 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
     - name: Build image
       run: docker build . --file Dockerfile --tag image
+
     - name: Run image
+      # Smoke test image by simply calling it directly with no file to check
       run: docker run image
+
+    - name: Run image against test spec
+      run: docker run --volume "$PWD/test":/data image simple.yaml
+
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@0.5.1
       with:
