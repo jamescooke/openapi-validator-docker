@@ -9,4 +9,6 @@ RUN npm install -g ibm-openapi-validator@${version}
 
 RUN npm cache clean --force
 
+RUN npm install @ibm-cloud/openapi-ruleset
+
 ENTRYPOINT ["lint-openapi"]
