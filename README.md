@@ -1,5 +1,5 @@
-[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/jamescooke/openapi-validator)](https://hub.docker.com/r/jamescooke/openapi-validator)
-[![Docker Pulls](https://img.shields.io/docker/pulls/jamescooke/openapi-validator)](https://hub.docker.com/r/jamescooke/openapi-validator)
+![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/jamescooke/openapi-validator-docker/build_test_tag.yml?branch=master&style=for-the-badge)
+[![Docker Pulls](https://img.shields.io/docker/pulls/jamescooke/openapi-validator?style=for-the-badge)](https://hub.docker.com/r/jamescooke/openapi-validator)
 
 
 # Docker image for IBM OpenAPI Validator
