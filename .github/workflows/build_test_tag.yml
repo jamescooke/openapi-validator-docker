@@ -13,7 +13,7 @@ jobs:
     - name: Build image
       run: docker build . --file Dockerfile --tag image
     - name: Run image
-      run: docker run image
+      run: docker run image --version
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@0.5.1
       with:
