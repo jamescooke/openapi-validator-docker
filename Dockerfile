@@ -1,7 +1,7 @@
 FROM node:current-bullseye
 
 # ARG is used here to make auto-update easy
-ARG version=1.0.6
+ARG version=1.0.7
 
 RUN npm install -g ibm-openapi-validator@${version}
 
