@@ -7,6 +7,31 @@
 This is a small community Docker image providing [IBM's
 OpenAPI Validator](https://github.com/IBM/openapi-validator/).
 
+## ⚠️ Deprecated ⚠️
+
+As of [Issue 599](https://github.com/IBM/openapi-validator/pull/599) this image
+is deprecated and will be archived 01/09/2023.
+
+### Sunset period
+
+From now until 01/09/2023, this repo and container image will be in a
+sunsetting period. During that time:
+
+* New releases will be maintained using the existing workflow.
+* Github issues will be closed off by default.
+
+### Closure
+
+On or soon after 01/09/2023:
+
+* The deprecation message will be updated to state "archived".
+* This repository will be set in archived state for 1 year. It will be deleted
+  on or after 01/09/2024.
+* [Docker hub
+  repository for this
+  image](https://hub.docker.com/r/jamescooke/openapi-validator) will be
+  deleted.
+
 ## Run
 
 * To validate a specification file `openapi.yaml` in the current directory,
