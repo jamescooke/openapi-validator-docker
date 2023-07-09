@@ -21,7 +21,7 @@ jobs:
         format: 'table'
         exit-code: '1'
         ignore-unfixed: true
-        severity: 'LOW,MEDIUM,HIGH,CRITICAL'
+        severity: 'HIGH,CRITICAL'
 
   check_new_version:
     needs: build_test

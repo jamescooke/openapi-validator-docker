@@ -1,4 +1,4 @@
-FROM node:current-bullseye
+FROM node:current-alpine
 
 # ARG is used here to make auto-update easy
 ARG version=1.1.2
