@@ -4,6 +4,7 @@ FROM node:current-alpine
 ARG version=1.1.2
 
 RUN npm install -g ibm-openapi-validator@${version}
+RUN npm install -g -U semver
 
 RUN npm cache clean --force
 
