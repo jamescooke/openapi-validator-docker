@@ -1,36 +1,17 @@
-![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/jamescooke/openapi-validator-docker/build_test_tag.yml?branch=master&style=for-the-badge)
-[![Docker Pulls](https://img.shields.io/docker/pulls/jamescooke/openapi-validator?style=for-the-badge)](https://hub.docker.com/r/jamescooke/openapi-validator)
+# \[ARCHIVED\] Docker image for IBM OpenAPI Validator
 
-
-# Docker image for IBM OpenAPI Validator
-
-This is a small community Docker image providing [IBM's
+This was a small community Docker image providing [IBM's
 OpenAPI Validator](https://github.com/IBM/openapi-validator/).
 
-## ⚠️ Deprecated ⚠️
+## ⚠️ Archived ⚠️
 
 As of [Issue 599](https://github.com/IBM/openapi-validator/pull/599) this image
-is deprecated and will be archived 01/09/2023.
+is deprecated and was archived 28/09/2023.
 
-### Sunset period
+### Archive
 
-From now until 01/09/2023, this repo and container image will be in a
-sunsetting period. During that time:
-
-* New releases will be maintained using the existing workflow.
-* Github issues will be closed off by default.
-
-### Closure
-
-On or soon after 01/09/2023:
-
-* The deprecation message will be updated to state "archived".
-* This repository will be set in archived state for 1 year. It will be deleted
-  on or after 01/09/2024.
-* [Docker hub
-  repository for this
-  image](https://hub.docker.com/r/jamescooke/openapi-validator) will be
-  deleted.
+This repository is in archived state for 1 year. It will be deleted on or after
+01/09/2024.
 
 ## Run
 
